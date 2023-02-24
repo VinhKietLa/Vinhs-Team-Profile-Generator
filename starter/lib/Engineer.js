@@ -3,20 +3,20 @@ const Employee = require("./Employee");
 
 // TODO: Write code to define and export the Employee class
 class Engineer extends Employee {
-  constructor(github, officeNumber, name, id, email) {
-    super(officeNumber, name, id, email);
+  constructor(name, id, email, github) {
+    super(name, id, email);
     this.github = github;
   }
 
-  //This gets the employees name//
+  //This gets the employees github username//
   getGithub() {
-
+    return this.github;
   }
 
   //This gets the employees ID //
 
   getRole() {
-    return "Manager";
+    return "Engineer";
   }
 }
 

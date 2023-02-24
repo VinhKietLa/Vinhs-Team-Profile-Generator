@@ -9,19 +9,19 @@ class Employee {
 
 //This gets the employees name//
 getName() {
-
+  return this.name
 }
 
 //This gets the employees ID //
 
 getId() {
-
+  return this.id;
 }
 
 //This gets the employees email //
 
 getEmail() {
-
+  return this.email;
 }
 
 //This gets the employees role //
@@ -32,4 +32,6 @@ getRole() {
 
 
 }
+
+module.exports = Employee
 
