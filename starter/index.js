@@ -19,7 +19,7 @@ async function start() {
   let internName, internID, internEmail, internSchool;
 
   //This inquirer is used to create the manager and the output is that a new instance of manager is pushed to the empty Team array.
-  let { managerName, managerID, managerEmail, officeNumber } =
+  let { managerName, managerID, managerEmail, managerOfficeNumber } =
     await inquirer.prompt([
       {
         type: "input",
@@ -73,7 +73,7 @@ async function start() {
       },
     ]);
   //This is used to push the new manager object to the Team array.
-  team.push(new Manager(managerName, managerID, managerEmail, officeNumber));
+  team.push(new Manager(managerName, managerID, managerEmail, managerOfficeNumber));
 
   //This while statement is created because it is required to keep within a loop if the user does not decide to end the application and keep adding an intern or engineer.
   while (true) {
