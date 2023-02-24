@@ -107,6 +107,16 @@ async function start() {
             type: "input",
             message: "Enter Engineer email:",
             name: "engineerEmail",
+            validate: function (value) {
+              //This function validates that the users input is an email address.
+              const pass = value.match(
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ // email address regular expression
+              );
+              if (pass) {
+                return true;
+              }
+              return "Please enter a valid email address"; //This message is printed if a valid email is not provided.
+            },
           },
           {
             type: "input",
@@ -135,6 +145,16 @@ async function start() {
             type: "input",
             message: "Enter intern email:",
             name: "internEmail",
+            validate: function (value) {
+              //This function validates that the users input is an email address.
+              const pass = value.match(
+                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ // email address regular expression
+              );
+              if (pass) {
+                return true;
+              }
+              return "Please enter a valid email address"; //This message is printed if a valid email is not provided.
+            },
           },
           {
             type: "input",
@@ -153,7 +173,7 @@ async function start() {
     let html = render(team);
 
     //This will write the html variable to a team.html in the output folder.
-    await fs.writeFile(outputPath, html, {});
+    await fs.writeFile(outputPath, html, function(){});
   }
 }
 //This starts the application function. 
