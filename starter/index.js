@@ -128,6 +128,11 @@ async function start() {
         },
         {
           type: "input",
+          message: "Enter intern ID:",
+          name: "internID",
+        },
+        {
+          type: "input",
           message: "Enter intern email:",
           name: "internEmail",
         },
@@ -143,6 +148,7 @@ async function start() {
     } else {
       // Finish building the team
       console.log('The application is now finished :)')
+      break;
     }
 
   // let team = [];
@@ -153,11 +159,11 @@ async function start() {
 
   let html = render(team);
   await fs.writeFile(outputPath, html, function (err) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("File written successfully");
-    }
+    // if (err) {
+    //   console.log(err);
+    // } else {
+    //   console.log("File written successfully");
+    // }
   });
 
   // console.log(`${managerName}`);
