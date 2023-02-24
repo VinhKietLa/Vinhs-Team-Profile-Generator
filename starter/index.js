@@ -13,7 +13,12 @@ const render = require("./src/page-template.js");
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
 async function start() {
-  let { managerName, managerID, managerEmail, officeNumber, selection } =
+
+  let engineerName, engineerID, engineerEmail, engineerGithub;
+  let internName, internID, internEmail, internSchool;
+
+
+  let { managerName, managerID, managerEmail, officeNumber,inputSelection} =
     await inquirer.prompt([
       {
         type: "input",
@@ -67,37 +72,51 @@ async function start() {
       {
         type: "list",
         message: "What would you like to do?",
-        name: "selection",
+        name: "inputSelection",
         choices: ["Add an engineer", "Add an intern", "Finish building the team"],
       },
     ]);
 
-    if (selection.selection === "Add an engineer") {
-      const engineerAnswers = await inquirer.prompt([
+    console.log(`${inputSelection}`)
+
+    if (inputSelection === "Add an engineer") {
+      ({ engineerName, engineerID, engineerEmail, engineerGithub,inputSelection} = await inquirer.prompt([
         {
           type: "input",
-          message: "Enter engineer name:",
+          message: "Enter Engineer name:",
           name: "engineerName",
         },
         {
           type: "input",
-          message: "Enter engineer email:",
+          message: "Enter Engineer ID:",
+          name: "engineerID",
+        },
+        {
+          type: "input",
+          message: "Enter Engineer email:",
           name: "engineerEmail",
         },
         {
           type: "input",
-          message: "Enter engineer GitHub username:",
+          message: "Enter Engineer GitHub username:",
           name: "engineerGithub",
         },
-      ]);
+      ]));
     
       // Process engineerAnswers here
-    } else if (selection.selection === "Add an intern") {
-      const internAnswers = await inquirer.prompt([
+    } 
+    
+    else if (inputSelection === "Add an intern") {
+      ({ internName, internID, internEmail, internSchool,inputSelection} = await inquirer.prompt([
         {
           type: "input",
           message: "Enter intern name:",
           name: "internName",
+        },
+        {
+          type: "input",
+          message: "Enter intern email:",
+          name: "internID",
         },
         {
           type: "input",
@@ -109,18 +128,20 @@ async function start() {
           message: "Enter intern school:",
           name: "internSchool",
         },
-      ]);
+      ]));
     
       // Process internAnswers here
     } else {
       // Finish building the team
+      console.log('The application is now finished :)')
+      return;
     }
 
   let team = [];
 
   team.push(new Manager(managerName, managerID, managerEmail, officeNumber));
-  // team.push(new Engineer("Helena", 666, "test@test.com", "ABC"));
-  // team.push(new Intern("Ocean", 555, "cat@test.com", "Plumcroft"));
+  team.push(new Engineer(engineerName, engineerID, engineerEmail, engineerGithub));
+  team.push(new Intern(internName, internID, internEmail, internSchool));
 
   let html = render(team);
   await fs.writeFile(outputPath, html, function (err) {
