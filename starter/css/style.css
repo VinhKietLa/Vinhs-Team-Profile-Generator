@@ -1,0 +1,29 @@
+html {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #CF6930;
+}
+
+.team-heading {
+    background-color: #CF6930;
+    color: white;;
+}
+
+ .card, .card-body, .list-group-item {
+    background-color: #3096CF;
+    border: 1px solid white;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.card {
+    margin: 0.5rem 0 0 0.5rem;
+}
+
+a {
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+}
